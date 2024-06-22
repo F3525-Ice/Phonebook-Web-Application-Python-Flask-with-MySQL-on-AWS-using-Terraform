@@ -1,18 +1,21 @@
-# Project-202 : Phonebook Application (Python Flask) deployed on AWS Application Load Balancer with Auto Scaling and Relational Database Service using Terraform
+# Project: Phonebook Application (Python Flask) deployed on AWS Application Load Balancer with Auto Scaling and Relational Database Service using Terraform
 
 ## Description
 
-The Phonebook Application aims to create a phonebook application in Python and deployed as a web application with Flask on AWS Application Load Balancer with Auto Scaling Group of Elastic Compute Cloud (EC2) Instances and Relational Database Service (RDS) using Terraform.
+The Phonebook Application project aims to create a scalable phonebook application using Python Flask, deployed on AWS using an Application Load Balancer and an Auto Scaling Group of EC2 instances, with a MySQL database hosted on RDS. The deployment process is managed with Terraform to ensure a robust and automated infrastructure setup.
 
 ## Problem Statement
 
-![Project_002](tf-phonebook.png)
+- Your company has initiated a project to develop a Phonebook web application. The initial UI and backend code have been developed by your team, and you are responsible for deploying the application in a development environment.
 
-- Your company has recently started a project that aims to serve as phonebook web application. You and your colleagues have started to work on the project. Your teammates have developed the UI part the project as shown in the template folder and develop the coding part and they need your help to deploying the app in development environment.
+  The application should allow users to:
 
-- As a first step, you need to write program that creates a phonebook, adds requested contacts to the phonebook, finds and removes the contacts from the phonebook.
+  - Search for contacts
+  - Add new contacts
+  - Update existing contacts
+  - Delete contacts
 
-- Application should allow users to search, add, update and delete the phonebook records and the phonebook records should be kept in separate MySQL database in AWS RDS service. Following is the format of data to be kept in db.
+  The phonebook records are stored in a MySQL database hosted on AWS RDS. The data format is as follows:
 
   - id: unique identifier for the phone record, type is numeric.
 
@@ -20,21 +23,21 @@ The Phonebook Application aims to create a phonebook application in Python and d
 
   - number: phone number of the person. type is numeric.
 
-- All the interactions with user on phonebook app should be done in case insensitive manner and name of the person should be formatted so that, only the first letters of each words in the name of the person should be in capital letters. If the user inputs number in the username field, user should be warned with text message.
+### Input Validation
 
-- Phone numbers in the app can be in any format, but the inputs should be checked to prevent string type. If the user inputs string in the number field, user should be warned with text message.
+- All user interactions should be case-insensitive, and names should be formatted with the first letter of each word capitalized. The application should validate inputs and display appropriate warnings for invalid inputs.
 
-- Example for user inputs and respective formats
+- Example Inputs and Formats:
 
 ```text
-Input in username field          Format to convert
+Input in username field          Format/Warning
 --------------                   -----------------
 ''                               Warning -> 'Invalid input: Name can not be empty'
 callahan                         Callahan
 joHn doE                         John Doe
 62267                            Warning -> 'Invalid input: Name of person should be text'
 
-Input in number field            Format to convert
+Input in number field            Format/Warning
 --------------                   -----------------
 ''                               Warning -> 'Invalid input: Phone number can not be empty'
 1234567890                       1234567890
@@ -42,31 +45,19 @@ Input in number field            Format to convert
 thousand                         Warning -> 'Invalid input: Phone number should be in numeric format'
 ```
 
-- As a second step, after you finish the coding, you are requested to deploy your web application using Python's Flask framework.
+### Deployment
 
-- You need to transform your program into web application using the `index.html`, `add-update.html` and `delete.html` within the `templates` folder. Note the followings for your web application.
+- Transform the application into a web application using Python Flask. The web application should be accessible via a web browser from anywhere. Use the provided HTML templates for the web interface.
 
-  - User should face first with `index.html` when web app started and the user should be able to; 
+  - index.html: For searching phonebook records.
 
-    - search the phonebook using `index.html`.
+  - add-update.html: For adding or updating records.
 
-    - add or update a record using `add-update.html`.
+  - delete.html: For deleting records.
 
-    - delete a record using `delete.html`.
-
-  - User input can be either integer or string, thus the input should be checked for the followings,
-
-    - The input for name should be string, and input for the phone number should be decimal number.
-
-    - When adding, updating or deleting a record, inputs can not be empty.
-
-    - If the input is not conforming with any conditions above, user should be warned using the `index.html` with template formatting.
-
-  - The Web Application should be accessible via web browser from anywhere.
+Deploy the application using Terraform on AWS, which includes setting up an Application Load Balancer, Auto Scaling Group, and RDS. Ensure the infrastructure is secure and follows best practices.
 
 - Lastly, after transforming your code into web application, you are requested to push your program to the project repository on the Github and deploy your solution in the development environment on AWS Cloud using Terraform to showcase your project. In the development environment, you can configure your Terraform file using the followings,
-
-![Project_207](Security-Groups.png)
 
   - The application should be created with new AWS resources.
 
@@ -113,7 +104,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 ## Project Skeleton 
 
 ```text
-002-tf-phonebook-web-application (folder)
+Phonebook Web Application (Python Flask) with MySQL on AWS using Terraform (folder)
 |
 |----readme.md               # Given to the students (Definition of the project)
 |----main.tf                 # To be delivered by students (Terraform Configuration) 
@@ -128,7 +119,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 
 ![Phonebook App Search Page](./search-snapshot.png)
 
-### At the end of the project, following topics are to be covered;
+### Topics Covered;
 
 - Algorithm design
 
@@ -162,57 +153,54 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 
 - Git & Github for Version Control System
 
-### At the end of the project, students will be able to;
+### Skills Developed;
 
-- show their coding skills using boolean/math operators, string formatting, if statements and functions within Python.
+- Writing Python code for CRUD operations
 
-- apply web programming skills using HTTP GET/POST methods, template formatting, importing packages within Python Flask Framework
+- Developing web applications with Flask
 
-- configure connection to the `MySQL` database.
+- Configuring MySQL database connections
 
-- work with a database using the SQL within Flask application.
+- Using SQL within Flask applications
 
-- demonstrate bash scripting skills using `user data` section within launch template in Terraform to install and setup web application on EC2 Instance.
+- Scripting with bash for automated setup
 
-- demonstrate their configuration skills of AWS EC2 Launch Templates, Application Load Balancer, ALB Target Group, ALB Listener, Auto Scaling Group, RDS and Security Groups.
+- Configuring AWS infrastructure with Terraform
 
-- configure Terraform template to use AWS Resources.
+- Using git commands and GitHub for version control
 
-- show how to use Terraform to launch AWS Resources.
-
-- apply git commands (push, pull, commit, add etc.) and Github as Version Control System.
+- Deploying web applications on AWS EC2 instances
 
 ## Steps to Solution
   
-- Step 1: Download or clone project definition from `clarusway` repo on Github 
+- Clone the project definition from the `F3525-Ice` repo on Github 
 
-- Step 2: Create project folder for local public repo on your pc
+- Set up the project folder for a local public repository on your PC.
 
-- Step 3: Write the Phonebook Application in Python
+- Write the Phonebook Application in Python.
 
-- Step 4: Transform your application into web application using Python Flask framework
+- Transform the application into a web application using Flask.
 
-- Step 5: Prepare a Terraform template to deploy your app on Application Load Balancer together with RDS
+- Prepare Terraform templates to deploy the app with an Application Load Balancer and RDS.
 
-- Step 6: Initialize Terraform in your current folder.
+- Initialize Terraform in your project folder.
 
-- Step 7: Run terraform commands (`terraform plan` and `terraform apply`) to deploy your application on AWS Cloud using Terraform template to showcase your app.
+- Run Terraform commands to deploy the application on AWS.
 
-- Step 6: Run `terraform destroy` command to destroy resources that you created with terraform.
+- Destroy the infrastructure using terraform destroy when done.
 
 
 ## Notes
 
-- Use the template formatting library `jinja` within Flask framework to leverage from given templates.
+- Use the jinja templating engine within Flask for HTML templates.
 
-- Use given html templates to warn user with invalid inputs.
+- Validate user inputs and show warnings for invalid entries using provided HTML templates.
 
-- Customize the application by hard-coding your name for the `developer_name` variable within html templates.
+- Customize the application by setting your name as the developer_name variable.
 
-- Use AWS CLI commands to get subnet ids of the default VPCs.
+- Use AWS CLI commands to get subnet IDs of the default VPCs.
 
-- Terraform configuration file can be splitted to multiple files like provider.tf, sec-gr.tf, outputs.tf etc.
-
+### AWS CLI Command Example:
 
 ```bash
 aws ec2 describe-subnets --no-paginate --filters "Name=default-for-az,Values=true" | egrep "(VpcId)|(SubnetId)"
