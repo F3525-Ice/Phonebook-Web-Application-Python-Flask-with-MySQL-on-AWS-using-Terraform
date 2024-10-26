@@ -85,7 +85,7 @@ resource "aws_db_instance" "db-server" {
   identifier                  = "phonebook-app-db"
   db_name                     = "phonebook"
   engine                      = "mysql"
-  engine_version              = "8.0.28"
+  engine_version              = "8.0.35"
   username                    = "admin"
   password                    = "Oliver_1"
   monitoring_interval         = 0

@@ -11,5 +11,5 @@ variable "key-name" {
 }
 
 variable "hosted-zone" {
-  default = "clarusway.us"
+  default = "egdevops.click"
 }
